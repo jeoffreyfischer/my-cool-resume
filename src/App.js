@@ -2,10 +2,10 @@ import { useRef, useState } from 'react';
 import './App.css';
 
 const SECTIONS = [
-  { id: 'work', label: 'Work experience', quarterClass: 'cv-quarter-tl' },
+  { id: 'work', label: 'Career', quarterClass: 'cv-quarter-tl' },
   { id: 'education', label: 'Education', quarterClass: 'cv-quarter-tr' },
-  { id: 'public', label: 'Public presence', quarterClass: 'cv-quarter-br' },
-  { id: 'interests', label: 'Interests', quarterClass: 'cv-quarter-bl' },
+  { id: 'public', label: 'Media', quarterClass: 'cv-quarter-br' },
+  { id: 'interests', label: 'Hobbies', quarterClass: 'cv-quarter-bl' },
 ];
 
 function App() {
