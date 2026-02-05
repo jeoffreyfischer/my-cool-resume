@@ -2,10 +2,10 @@ import { useRef, useState } from 'react';
 import './App.css';
 
 const SECTIONS = [
-  { id: 'work', label: 'Career', quarterClass: 'cv-quarter-tl', cornerClass: 'cv-corner-tl', color: '#f59e0b', colorHover: '#d97706', textColor: '#1e3a8a' },
-  { id: 'education', label: 'Education', quarterClass: 'cv-quarter-tr', cornerClass: 'cv-corner-tr', color: '#10b981', colorHover: '#059669', textColor: '#450a0a' },
-  { id: 'public', label: 'Media', quarterClass: 'cv-quarter-br', cornerClass: 'cv-corner-br', color: '#8b5cf6', colorHover: '#7c3aed', textColor: '#422006' },
-  { id: 'interests', label: 'Hobbies', quarterClass: 'cv-quarter-bl', cornerClass: 'cv-corner-bl', color: '#f43f5e', colorHover: '#e11d48', textColor: '#052e16' },
+  { id: 'work', label: 'Career', quarterClass: 'cv-quarter-tl', cornerClass: 'cv-corner-tl', color: '#f59e0b', colorFade: '#fef3c7', colorHover: '#d97706', textColor: '#1e3a8a' },
+  { id: 'education', label: 'Education', quarterClass: 'cv-quarter-tr', cornerClass: 'cv-corner-tr', color: '#10b981', colorFade: '#d1fae5', colorHover: '#059669', textColor: '#450a0a' },
+  { id: 'public', label: 'Media', quarterClass: 'cv-quarter-br', cornerClass: 'cv-corner-br', color: '#8b5cf6', colorFade: '#ede9fe', colorHover: '#7c3aed', textColor: '#422006' },
+  { id: 'interests', label: 'Hobbies', quarterClass: 'cv-quarter-bl', cornerClass: 'cv-corner-bl', color: '#f43f5e', colorFade: '#ffe4e6', colorHover: '#e11d48', textColor: '#052e16' },
 ];
 
 function App() {
@@ -43,7 +43,10 @@ function App() {
         {activeSection && (
           <div
             className={`cv-expanded-quarter cv-expanded-${activeSection.quarterClass}`}
-            style={{ backgroundColor: activeSection.color }}
+            style={{
+              '--expanded-color': activeSection.color,
+              '--expanded-fade': activeSection.colorFade,
+            }}
             aria-hidden="true"
           />
         )}
