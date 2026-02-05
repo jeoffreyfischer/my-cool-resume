@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import './App.css';
 
 const SECTIONS = [
@@ -10,10 +10,17 @@ const SECTIONS = [
 
 function App() {
   const [activeSection, setActiveSection] = useState(null);
+  const circleRef = useRef(null);
+
+  const handlePageClick = (e) => {
+    if (circleRef.current && !circleRef.current.contains(e.target)) {
+      setActiveSection(null);
+    }
+  };
 
   return (
-    <div className="cv-page bg-slate-900">
-      <div className="cv-circle">
+    <div className="cv-page bg-slate-900" onClick={handlePageClick}>
+      <div className="cv-circle" ref={circleRef}>
         {/* Four quarter-circle buttons forming the outer circle */}
         <button
           type="button"
