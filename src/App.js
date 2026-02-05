@@ -39,6 +39,15 @@ function App() {
         </defs>
       </svg>
       <div className="cv-square" ref={squareRef}>
+        {/* Expanded quarter when a section is active – grows from clicked corner */}
+        {activeSection && (
+          <div
+            className={`cv-expanded-quarter cv-expanded-${activeSection.quarterClass}`}
+            style={{ backgroundColor: activeSection.color }}
+            aria-hidden="true"
+          />
+        )}
+
         {/* Corner gaps – content moves here when section is active */}
         {SECTIONS.map((section) => (
           <div
@@ -57,7 +66,9 @@ function App() {
           </div>
         ))}
 
-        <div className="cv-circle">
+        <div
+          className={`cv-circle ${activeSection ? `cv-circle-active cv-circle-active-${activeSection.quarterClass}` : ''}`}
+        >
         {/* Four quarter-circle buttons forming the outer circle */}
         <button
           type="button"
@@ -120,15 +131,22 @@ function App() {
           </svg>
         </button>
 
-        {/* Center circle with content */}
+        {/* Center circle: "Home" button when a section is active, else placeholder text */}
         <div className="cv-center">
-          <div className="cv-center-inner">
-            <p className="cv-center-text">
-              {activeSection
-                ? `${activeSection.label} coming soon...`
-                : 'Click a section'}
-            </p>
-          </div>
+          {activeSection ? (
+            <button
+              type="button"
+              className="cv-center-inner cv-center-home-btn"
+              onClick={(e) => { e.stopPropagation(); setActiveSection(null); }}
+              aria-label="Back to home"
+            >
+              <span className="cv-center-text">Home</span>
+            </button>
+          ) : (
+            <div className="cv-center-inner">
+              <p className="cv-center-text">Click a section</p>
+            </div>
+          )}
         </div>
       </div>
       </div>

@@ -29,6 +29,7 @@
   height: 50%;
   pointer-events: none;
   overflow: hidden;
+  z-index: 1;
 }
 
 .cv-corner-tl { top: 0; left: 0; clip-path: url(#corner-tl); }
@@ -74,12 +75,99 @@
 
 .cv-corner-active.cv-corner-br .cv-corner-content { transform: scale(1) rotate(-180deg); }
 
-/* Circle: inscribed in square */
+/* Expanded quarter when a section is active – large quarter circle from clicked corner */
+.cv-expanded-quarter {
+  position: absolute;
+  border-radius: 0;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cv-expanded-cv-quarter-tl {
+  top: 0;
+  left: 0;
+  width: 78%;
+  height: 78%;
+  border-radius: 0;
+}
+
+.cv-expanded-cv-quarter-tr {
+  top: 0;
+  right: 0;
+  left: auto;
+  width: 78%;
+  height: 78%;
+  border-radius: 0;
+}
+
+.cv-expanded-cv-quarter-br {
+  bottom: 0;
+  right: 0;
+  top: auto;
+  left: auto;
+  width: 78%;
+  height: 78%;
+  border-radius: 0;
+}
+
+.cv-expanded-cv-quarter-bl {
+  bottom: 0;
+  left: 0;
+  top: auto;
+  width: 78%;
+  height: 78%;
+  border-radius: 0;
+}
+
+/* Circle: default full size; when active, shrink and move to opposite corner */
 .cv-circle {
   position: absolute;
   inset: 0;
   border-radius: 50%;
   overflow: hidden;
+  transition: inset 0.35s ease, width 0.35s ease, height 0.35s ease, right 0.35s ease, bottom 0.35s ease, top 0.35s ease, left 0.35s ease;
+  z-index: 2;
+}
+
+.cv-circle-active.cv-circle-active-cv-quarter-tl {
+  inset: auto;
+  top: auto;
+  left: auto;
+  right: 2%;
+  bottom: 2%;
+  width: 36%;
+  height: 36%;
+}
+
+.cv-circle-active.cv-circle-active-cv-quarter-tr {
+  inset: auto;
+  top: auto;
+  right: auto;
+  left: 2%;
+  bottom: 2%;
+  width: 36%;
+  height: 36%;
+}
+
+.cv-circle-active.cv-circle-active-cv-quarter-br {
+  inset: auto;
+  bottom: auto;
+  right: auto;
+  top: 2%;
+  left: 2%;
+  width: 36%;
+  height: 36%;
+}
+
+.cv-circle-active.cv-circle-active-cv-quarter-bl {
+  inset: auto;
+  bottom: auto;
+  left: auto;
+  top: 2%;
+  right: 2%;
+  width: 36%;
+  height: 36%;
 }
 
 /* Quarter-circle buttons – each is half the size, one corner rounded to form a quarter circle */
@@ -139,10 +227,11 @@
   transition: filter 0.4s ease, background-color 0.4s ease;
 }
 
-.cv-quarter-active.cv-quarter-tl { background-color: rgba(245, 158, 11, 0.25) !important; }
-.cv-quarter-active.cv-quarter-tr { background-color: rgba(16, 185, 129, 0.25) !important; }
-.cv-quarter-active.cv-quarter-br { background-color: rgba(139, 92, 246, 0.25) !important; }
-.cv-quarter-active.cv-quarter-bl { background-color: rgba(244, 63, 94, 0.25) !important; }
+/* When active, quarter in small circle is transparent so expanded quarter shows through */
+.cv-quarter-active.cv-quarter-tl { background-color: transparent !important; }
+.cv-quarter-active.cv-quarter-tr { background-color: transparent !important; }
+.cv-quarter-active.cv-quarter-br { background-color: transparent !important; }
+.cv-quarter-active.cv-quarter-bl { background-color: transparent !important; }
 
 .cv-quarter-arc-svg {
   transition: opacity 0.4s ease;
@@ -225,6 +314,20 @@
   justify-content: center;
   padding: 1.5rem;
   pointer-events: auto; /* capture clicks so the center doesn’t activate quarter buttons */
+}
+
+.cv-center-home-btn {
+  cursor: pointer;
+  font: inherit;
+}
+
+.cv-center-home-btn:hover {
+  background-color: #475569;
+  border-color: #64748b;
+}
+
+.cv-center-home-btn:active {
+  transform: scale(0.98);
 }
 
 .cv-center-text {
