@@ -12,14 +12,72 @@
   background-color: #0f172a; /* slate-900 */
 }
 
-/* Circle: always fits viewport – uses the smaller of height or width so it stays fully visible */
-.cv-circle {
+/* Square container – circle is inscribed, corners extend to square edges */
+.cv-square {
   position: relative;
   width: min(100vh, 100vw);
   height: min(100vh, 100vw);
   max-width: 100vw;
   max-height: 100vh;
   flex-shrink: 0;
+}
+
+/* Corner gaps – space between square corners and outer circle */
+.cv-corner {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.cv-corner-tl { top: 0; left: 0; clip-path: url(#corner-tl); }
+.cv-corner-tr { top: 0; right: 0; clip-path: url(#corner-tr); }
+.cv-corner-br { bottom: 0; right: 0; clip-path: url(#corner-br); transform: rotate(180deg); }
+.cv-corner-bl { bottom: 0; left: 0; clip-path: url(#corner-bl); }
+
+/* Corner content – shown when section is active, animates in */
+.cv-corner-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--corner-bg);
+  border-radius: inherit;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+}
+
+.cv-corner-active .cv-corner-content {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.cv-corner-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: clamp(0.75rem, 2.5vmin, 1.125rem);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--corner-text);
+  padding: 0.5rem;
+}
+
+/* Position label toward the corner for each quadrant */
+.cv-corner-tl .cv-corner-content { align-items: flex-start; justify-content: flex-start; padding: 12%; }
+.cv-corner-tr .cv-corner-content { align-items: flex-start; justify-content: flex-end; padding: 12%; }
+.cv-corner-br .cv-corner-content { align-items: flex-end; justify-content: flex-end; padding: 12%; transform: scale(0.5) rotate(-180deg); }
+.cv-corner-bl .cv-corner-content { align-items: flex-end; justify-content: flex-start; padding: 12%; }
+
+.cv-corner-active.cv-corner-br .cv-corner-content { transform: scale(1) rotate(-180deg); }
+
+/* Circle: inscribed in square */
+.cv-circle {
+  position: absolute;
+  inset: 0;
   border-radius: 50%;
   overflow: hidden;
 }
@@ -31,7 +89,7 @@
   height: 50%;
   border: none;
   cursor: pointer;
-  transition: filter 0.2s, transform 0.1s;
+  transition: filter 0.2s, transform 0.1s, background-color 0.4s ease;
   display: flex;
   padding: 0;
   overflow: hidden;
@@ -74,6 +132,25 @@
 
 .cv-quarter:active {
   transform: scale(0.98);
+}
+
+/* When section is active: quarter dims, label fades out (content moved to corner) */
+.cv-quarter-active {
+  transition: filter 0.4s ease, background-color 0.4s ease;
+}
+
+.cv-quarter-active.cv-quarter-tl { background-color: rgba(245, 158, 11, 0.25) !important; }
+.cv-quarter-active.cv-quarter-tr { background-color: rgba(16, 185, 129, 0.25) !important; }
+.cv-quarter-active.cv-quarter-br { background-color: rgba(139, 92, 246, 0.25) !important; }
+.cv-quarter-active.cv-quarter-bl { background-color: rgba(244, 63, 94, 0.25) !important; }
+
+.cv-quarter-arc-svg {
+  transition: opacity 0.4s ease;
+}
+
+.cv-quarter-arc-svg-hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* Top-left quarter */
