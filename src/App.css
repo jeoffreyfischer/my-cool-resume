@@ -46,7 +46,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--corner-bg);
+  background-color: transparent;
   border-radius: 0.25rem;
   opacity: 0;
   transform: scale(0.5);
