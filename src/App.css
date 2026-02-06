@@ -679,6 +679,85 @@
   background-color: #9f1239; /* rose-800 */
 }
 
+/* Hover image layer – above everything, not clipped by circle overflow */
+.cv-quarter-hover-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.cv-quarter-hover-image {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.cv-square:has(.cv-quarter-tr:hover) .cv-quarter-hover-image--education {
+  opacity: 1;
+}
+
+.cv-quarter-hover-image--education {
+  right: 0;
+  top: 12%;
+  height: 38%;
+  width: auto;
+  object-fit: contain;
+  object-position: right center;
+  transform: translateX(12%);
+}
+
+.cv-square:has(.cv-quarter-tl:hover) .cv-quarter-hover-image--career {
+  opacity: 1;
+}
+
+.cv-quarter-hover-image--career {
+  left: 0;
+  top: 12%;
+  height: 38%;
+  width: auto;
+  object-fit: contain;
+  object-position: left center;
+  transform: translateX(-12%);
+}
+
+.cv-square:has(.cv-quarter-br:hover) .cv-quarter-hover-image--media {
+  opacity: 1;
+}
+
+.cv-quarter-hover-image--media {
+  right: 0;
+  bottom: 12%;
+  top: auto;
+  height: 38%;
+  width: auto;
+  object-fit: contain;
+  object-position: right center;
+  transform: translateX(12%);
+}
+
+.cv-square:has(.cv-quarter-bl:hover) .cv-quarter-hover-image--hobbies {
+  opacity: 1;
+}
+
+.cv-quarter-hover-image--hobbies {
+  left: 0;
+  bottom: 12%;
+  top: auto;
+  height: 38%;
+  width: auto;
+  object-fit: contain;
+  object-position: left center;
+  transform: translateX(-12%);
+}
+
+.cv-square:has(.cv-circle-active) .cv-quarter-hover-image--education,
+.cv-square:has(.cv-circle-active) .cv-quarter-hover-image--career,
+.cv-square:has(.cv-circle-active) .cv-quarter-hover-image--media,
+.cv-square:has(.cv-circle-active) .cv-quarter-hover-image--hobbies {
+  opacity: 0;
+}
+
 /* Ring between center disc and quarter buttons – page-colored donut so the gap blends in */
 /* Ring 55%; transparent hole smaller so page color extends inward and covers any colored band next to center.
    pointer-events: auto so the ring blocks clicks in the center/donut – only the colored quarters receive clicks. */
@@ -758,6 +837,19 @@
   font-weight: 500;
   letter-spacing: 0.02em;
   line-height: 1.5;
+}
+
+/* Center photo: fill circle, clipped to circle */
+.cv-center-inner--photo {
+  padding: 0;
+  overflow: hidden;
+}
+
+.cv-center-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* Mobile / smartphone only: prevent overlap, text scales with vertical space */

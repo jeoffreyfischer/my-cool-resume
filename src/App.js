@@ -26,6 +26,28 @@ function App() {
       <div className="cv-square">
         <ExpandedQuarter activeSection={activeSection} />
         <CornerGaps sections={SECTIONS} activeSection={activeSection} />
+        <div className="cv-quarter-hover-layer" aria-hidden="true">
+          <img
+            src={`${process.env.PUBLIC_URL}/images/jeo-to-the-left-removebg.png`}
+            alt=""
+            className="cv-quarter-hover-image cv-quarter-hover-image--education"
+          />
+          <img
+            src={`${process.env.PUBLIC_URL}/images/jeo-to-the-right-removebg.png`}
+            alt=""
+            className="cv-quarter-hover-image cv-quarter-hover-image--career"
+          />
+          <img
+            src={`${process.env.PUBLIC_URL}/images/jeo-happy-removebg.png`}
+            alt=""
+            className="cv-quarter-hover-image cv-quarter-hover-image--media"
+          />
+          <img
+            src={`${process.env.PUBLIC_URL}/images/jeo-sad-removebg.png`}
+            alt=""
+            className="cv-quarter-hover-image cv-quarter-hover-image--hobbies"
+          />
+        </div>
         <div className={`cv-circle ${circleActiveClass}`}>
           <QuarterButtons
             sections={SECTIONS}

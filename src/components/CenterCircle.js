@@ -16,8 +16,12 @@ function CenterCircle({ activeSection, setActiveSection }) {
           </span>
         </button>
       ) : (
-        <div className="cv-center-inner">
-          <p className="cv-center-text">Click a section</p>
+        <div className="cv-center-inner cv-center-inner--photo">
+          <img
+            src={`${process.env.PUBLIC_URL}/images/jeo-thinking.png`}
+            alt="Jeo"
+            className="cv-center-photo"
+          />
         </div>
       )}
     </div>
