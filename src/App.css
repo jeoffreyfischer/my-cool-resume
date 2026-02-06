@@ -50,7 +50,7 @@
   border-radius: 0.25rem;
   opacity: 0;
   transform: scale(0.5);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1), transform 2s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
 }
 
@@ -84,7 +84,7 @@
 .cv-expanded-quarter {
   position: absolute;
   border-radius: 0;
-  transition: opacity 0.35s ease, transform 0.35s ease;
+  transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1), transform 2s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
   z-index: 0;
   /* --expanded-color and --expanded-fade set inline from section data */
@@ -147,54 +147,37 @@
   );
 }
 
-/* Circle: default full size; when active, shrink and move to opposite corner */
+/* Circle: full size by default; when active, scale + translate to corner. Using translate (not
+   transform-origin) so switching between sections animates smoothly from one corner to another. */
 .cv-circle {
   position: absolute;
   inset: 0;
   border-radius: 50%;
   overflow: hidden;
-  transition: inset 0.35s ease, width 0.35s ease, height 0.35s ease, right 0.35s ease, bottom 0.35s ease, top 0.35s ease, left 0.35s ease;
+  transform-origin: 50% 50%;
+  transform: translate(0, 0) scale(1);
+  transition: transform 2s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 2;
 }
 
+/* Move to bottom-right (opposite of top-left quarter) */
 .cv-circle-active.cv-circle-active-cv-quarter-tl {
-  inset: auto;
-  top: auto;
-  left: auto;
-  right: 2%;
-  bottom: 2%;
-  width: 36%;
-  height: 36%;
+  transform: translate(30%, 30%) scale(0.36);
 }
 
+/* Move to bottom-left (opposite of top-right quarter) */
 .cv-circle-active.cv-circle-active-cv-quarter-tr {
-  inset: auto;
-  top: auto;
-  right: auto;
-  left: 2%;
-  bottom: 2%;
-  width: 36%;
-  height: 36%;
+  transform: translate(-30%, 30%) scale(0.36);
 }
 
+/* Move to top-left (opposite of bottom-right quarter) */
 .cv-circle-active.cv-circle-active-cv-quarter-br {
-  inset: auto;
-  bottom: auto;
-  right: auto;
-  top: 2%;
-  left: 2%;
-  width: 36%;
-  height: 36%;
+  transform: translate(-30%, -30%) scale(0.36);
 }
 
+/* Move to top-right (opposite of bottom-left quarter) */
 .cv-circle-active.cv-circle-active-cv-quarter-bl {
-  inset: auto;
-  bottom: auto;
-  left: auto;
-  top: 2%;
-  right: 2%;
-  width: 36%;
-  height: 36%;
+  transform: translate(30%, -30%) scale(0.36);
 }
 
 /* Quarter-circle buttons – each is half the size, one corner rounded to form a quarter circle */
@@ -229,7 +212,7 @@
   background: transparent;
   color: var(--color-icon-default);
   font-size: clamp(3.25rem, 13vmin, 6.5rem);
-  transition: opacity 0.4s ease, font-size 0.35s ease;
+  transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1), font-size 2s cubic-bezier(0.4, 0, 0.2, 1);
   /* translate(-50%, -50%) so the icon’s center is the positioning reference */
   transform: translate(-50%, -50%);
 }
@@ -265,7 +248,7 @@
 
 /* When section is active: quarter dims, label fades out (content moved to corner) */
 .cv-quarter-active {
-  transition: filter 0.4s ease, background-color 0.4s ease;
+  transition: filter 2s cubic-bezier(0.4, 0, 0.2, 1), background-color 2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* When active, quarter in small circle is transparent so expanded quarter shows through */
