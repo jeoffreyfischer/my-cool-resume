@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+/* Design tokens – use these instead of hard-coded colors (AGENTS.md) */
+:root {
+  --color-page-bg: #0f172a; /* slate-900 */
+  --color-icon-default: #0f172a;
+  --color-icon-hover: #fff;
+  --color-center-inner-bg: #334155;
+  --color-center-inner-border: #475569;
+  --color-center-inner-hover-bg: #475569;
+  --color-center-inner-hover-border: #64748b;
+  --color-center-text: #e2e8f0;
+}
+
 body {
   margin: 0;
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',

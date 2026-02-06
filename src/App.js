@@ -1,5 +1,11 @@
 import { useState } from 'react';
 import './App.css';
+import CornerClipPaths from './components/CornerClipPaths';
+import CornerGaps from './components/CornerGaps';
+import CenterCircle from './components/CenterCircle';
+import CenterRing from './components/CenterRing';
+import ExpandedQuarter from './components/ExpandedQuarter';
+import QuarterButtons from './components/QuarterButtons';
 
 const SECTIONS = [
   { id: 'work', label: 'Career', iconClass: 'fa-solid fa-briefcase', quarterClass: 'cv-quarter-tl', cornerClass: 'cv-corner-tl', color: '#f59e0b', colorFade: '#fef3c7', colorHover: '#d97706', textColor: '#1e3a8a' },
@@ -10,102 +16,25 @@ const SECTIONS = [
 
 function App() {
   const [activeSection, setActiveSection] = useState(null);
+  const circleActiveClass = activeSection
+    ? `cv-circle-active cv-circle-active-${activeSection.quarterClass}`
+    : '';
 
   return (
     <div className="cv-page bg-slate-900">
-      {/* SVG clipPaths for corner gap shapes (objectBoundingBox = 0–1 coords) */}
-      <svg width="0" height="0" aria-hidden="true">
-        <defs>
-          <clipPath id="corner-tl" clipPathUnits="objectBoundingBox">
-            <path d="M 0 0 L 1 0 A 0.5 0.5 0 0 1 0 1 Z" />
-          </clipPath>
-          <clipPath id="corner-tr" clipPathUnits="objectBoundingBox">
-            <path d="M 1 0 L 1 1 A 0.5 0.5 0 0 1 0 0 Z" />
-          </clipPath>
-          <clipPath id="corner-br" clipPathUnits="objectBoundingBox">
-            {/* Same path as corner-tl; BR element is rotated 180deg so (0,0) is the corner */}
-            <path d="M 0 0 L 1 0 A 0.5 0.5 0 0 1 0 1 Z" />
-          </clipPath>
-          <clipPath id="corner-bl" clipPathUnits="objectBoundingBox">
-            <path d="M 0 1 L 0 0 A 0.5 0.5 0 0 1 1 1 Z" />
-          </clipPath>
-        </defs>
-      </svg>
+      <CornerClipPaths />
       <div className="cv-square">
-        {/* Expanded quarter when a section is active – grows from clicked corner */}
-        {activeSection && (
-          <div
-            className={`cv-expanded-quarter cv-expanded-${activeSection.quarterClass}`}
-            style={{
-              '--expanded-color': activeSection.color,
-              '--expanded-fade': activeSection.colorFade,
-            }}
-            aria-hidden="true"
+        <ExpandedQuarter activeSection={activeSection} />
+        <CornerGaps sections={SECTIONS} activeSection={activeSection} />
+        <div className={`cv-circle ${circleActiveClass}`}>
+          <QuarterButtons
+            sections={SECTIONS}
+            activeSection={activeSection}
+            setActiveSection={setActiveSection}
           />
-        )}
-
-        {/* Corner gaps – content moves here when section is active */}
-        {SECTIONS.map((section) => (
-          <div
-            key={section.id}
-            className={`cv-corner ${section.cornerClass} ${activeSection?.id === section.id ? 'cv-corner-active' : ''}`}
-          >
-            <div
-              className="cv-corner-content"
-              style={{
-                '--corner-bg': section.color,
-                '--corner-text': section.textColor,
-              }}
-            >
-              <span className="cv-corner-label">{section.label}</span>
-            </div>
-          </div>
-        ))}
-
-        <div
-          className={`cv-circle ${activeSection ? `cv-circle-active cv-circle-active-${activeSection.quarterClass}` : ''}`}
-        >
-        {/* Four quarter-circle buttons forming the outer circle */}
-        {SECTIONS.map((section) => (
-          <button
-            key={section.id}
-            type="button"
-            className={`cv-quarter ${section.quarterClass} ${activeSection?.id === section.id ? 'cv-quarter-active' : ''}`}
-            onClick={() => setActiveSection(section)}
-            aria-label={section.label}
-          >
-            <span
-              className={`cv-quarter-icon ${activeSection?.id === section.id ? 'cv-quarter-icon-hidden' : ''}`}
-              aria-hidden="true"
-            >
-              <i className={section.iconClass} />
-            </span>
-          </button>
-        ))}
-
-        {/* Ring: page-colored donut so gap between small center and quarter buttons matches page background */}
-        <div className="cv-center-ring" aria-hidden="true" />
-
-        {/* Center circle: "Home" button when a section is active, else placeholder text */}
-        <div className="cv-center">
-          {activeSection ? (
-            <button
-              type="button"
-              className="cv-center-inner cv-center-home-btn"
-              onClick={(e) => { e.stopPropagation(); setActiveSection(null); }}
-              aria-label="Back to home"
-            >
-              <span className="cv-center-icon" aria-hidden="true">
-                <i className="fa-solid fa-house" />
-              </span>
-            </button>
-          ) : (
-            <div className="cv-center-inner">
-              <p className="cv-center-text">Click a section</p>
-            </div>
-          )}
+          <CenterRing />
+          <CenterCircle activeSection={activeSection} setActiveSection={setActiveSection} />
         </div>
-      </div>
       </div>
     </div>
   );
