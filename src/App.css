@@ -80,6 +80,163 @@
 .cv-corner-active.cv-corner-br .cv-corner-content { transform: scale(1) rotate(-180deg); }
 .cv-corner-active.cv-corner-bl .cv-corner-content { transform: scale(1); }
 
+.cv-career.cv-section-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-start;
+  gap: 0.25em;
+  margin-top: 1em;
+}
+
+.cv-education.cv-section-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-start;
+  gap: 0.25em;
+  margin-top: 1em;
+}
+
+.cv-section-content {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--corner-text);
+  width: 100%;
+}
+
+.cv-section-title {
+  font-size: clamp(0.85rem, 2.8vmin, 1.1rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 0.6em 0;
+  opacity: 0.95;
+  flex-shrink: 0;
+}
+
+.cv-job {
+  margin-bottom: 0.4em;
+  flex-shrink: 0;
+}
+
+.cv-job:first-child {
+  margin-top: 1.2em;
+}
+
+.cv-job:nth-child(2) {
+  margin-top: 0.6em;
+}
+
+.cv-job:last-child {
+  margin-bottom: 0.6em;
+}
+
+.cv-job-role {
+  font-weight: 700;
+  font-size: clamp(0.8rem, 2.4vmin, 1rem);
+  line-height: 1.3;
+}
+
+.cv-job-company {
+  font-size: clamp(0.7rem, 2.1vmin, 0.9rem);
+  opacity: 0.95;
+  margin-top: 0.15em;
+}
+
+.cv-job-period {
+  font-size: clamp(0.7rem, 2vmin, 0.85rem);
+  font-weight: 700;
+  margin: 0.25em 0 0.35em 0;
+  padding: 0.15em 0.4em;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 0.2em;
+  display: inline-block;
+}
+
+.cv-job-highlights {
+  margin: 0.25em 0 0 0;
+  padding-left: 1.25em;
+  list-style-type: disc;
+  font-size: clamp(0.7rem, 2vmin, 0.85rem);
+  line-height: 1.5;
+}
+
+.cv-job-highlights li {
+  margin-bottom: 0.2em;
+}
+
+.cv-job-highlights strong {
+  font-weight: 700;
+}
+
+.cv-edu-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15em;
+  margin-bottom: 0.4em;
+}
+
+.cv-edu-item:first-child {
+  margin-top: 1.2em;
+}
+
+.cv-edu-item:nth-child(2) {
+  margin-top: 0.6em;
+}
+
+.cv-edu-item:last-of-type {
+  margin-bottom: 0.6em;
+}
+
+.cv-edu-degree {
+  font-weight: 700;
+  font-size: clamp(0.8rem, 2.4vmin, 1rem);
+  line-height: 1.3;
+}
+
+.cv-edu-institution {
+  font-size: clamp(0.7rem, 2.1vmin, 0.9rem);
+}
+
+.cv-edu-location {
+  font-size: clamp(0.65rem, 1.8vmin, 0.8rem);
+  opacity: 0.9;
+}
+
+.cv-edu-period {
+  font-size: clamp(0.7rem, 2vmin, 0.85rem);
+  font-weight: 700;
+  margin-top: 0.2em;
+  padding: 0.15em 0.4em;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 0.2em;
+  display: inline-block;
+}
+
+.cv-certifications {
+  margin-top: 1.2em;
+  padding-top: 0.4em;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+}
+
+.cv-cert-title {
+  font-size: clamp(0.7rem, 2vmin, 0.85rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.35em 0;
+  opacity: 0.9;
+}
+
+.cv-certifications ul {
+  margin: 0;
+  padding-left: 1.25em;
+  list-style-type: disc;
+  font-size: clamp(0.65rem, 1.9vmin, 0.8rem);
+  line-height: 1.6;
+}
+
 /* Expanded quarter when a section is active – rectangle with diagonal fade to light */
 .cv-expanded-quarter {
   position: absolute;
@@ -88,6 +245,18 @@
   pointer-events: none;
   z-index: 0;
   /* --expanded-color and --expanded-fade set inline from section data */
+}
+
+/* Content fills the full expanded rectangle – from far corner to near home button */
+.cv-expanded-content {
+  position: absolute;
+  inset: 0;
+  padding: 4% 5%;
+  box-sizing: border-box;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  color: var(--corner-text);
 }
 
 /* Smooth diagonal gradient: one color at corner, blend to light at opposite corner */
