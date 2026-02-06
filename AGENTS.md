@@ -39,6 +39,7 @@ npm run deploy
 - Read files, list files.
 - Run tests for a single file, run build to verify.
 - Edit existing files and add new files in `src/` and `public/`.
+- `npm run build` 
 
 **Ask first:**
 - `npm install` / adding or changing dependencies.
