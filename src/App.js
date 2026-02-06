@@ -23,7 +23,7 @@ function App() {
   return (
     <div className="cv-page bg-slate-900">
       <CornerClipPaths />
-      <div className="cv-square">
+      <div className={`cv-square ${!activeSection ? 'cv-main-page' : ''}`}>
         <ExpandedQuarter activeSection={activeSection} />
         <CornerGaps sections={SECTIONS} activeSection={activeSection} />
         <div className="cv-quarter-hover-layer" aria-hidden="true">

@@ -693,7 +693,8 @@
   transition: opacity 0.3s ease;
 }
 
-.cv-square:has(.cv-quarter-tr:hover) .cv-quarter-hover-image--education {
+/* Hover images only on main page */
+.cv-square.cv-main-page:has(.cv-quarter-tr:hover) .cv-quarter-hover-image--education {
   opacity: 1;
 }
 
@@ -707,7 +708,7 @@
   transform: translateX(12%);
 }
 
-.cv-square:has(.cv-quarter-tl:hover) .cv-quarter-hover-image--career {
+.cv-square.cv-main-page:has(.cv-quarter-tl:hover) .cv-quarter-hover-image--career {
   opacity: 1;
 }
 
@@ -721,7 +722,7 @@
   transform: translateX(-12%);
 }
 
-.cv-square:has(.cv-quarter-br:hover) .cv-quarter-hover-image--media {
+.cv-square.cv-main-page:has(.cv-quarter-br:hover) .cv-quarter-hover-image--media {
   opacity: 1;
 }
 
@@ -736,7 +737,7 @@
   transform: translateX(12%);
 }
 
-.cv-square:has(.cv-quarter-bl:hover) .cv-quarter-hover-image--hobbies {
+.cv-square.cv-main-page:has(.cv-quarter-bl:hover) .cv-quarter-hover-image--hobbies {
   opacity: 1;
 }
 
@@ -749,13 +750,6 @@
   object-fit: contain;
   object-position: left center;
   transform: translateX(-12%);
-}
-
-.cv-square:has(.cv-circle-active) .cv-quarter-hover-image--education,
-.cv-square:has(.cv-circle-active) .cv-quarter-hover-image--career,
-.cv-square:has(.cv-circle-active) .cv-quarter-hover-image--media,
-.cv-square:has(.cv-circle-active) .cv-quarter-hover-image--hobbies {
-  opacity: 0;
 }
 
 /* Ring between center disc and quarter buttons – page-colored donut so the gap blends in */
