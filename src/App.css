@@ -176,12 +176,12 @@
   margin-bottom: 0;
 }
 
-.cv-edu-item:first-child {
+.cv-edu-item:first-of-type {
   margin-top: 2em;
   margin-bottom: -1.2em;
 }
 
-.cv-edu-item:nth-child(2) {
+.cv-edu-item:nth-of-type(2) {
   margin-top: -0.2em;
 }
 
@@ -237,6 +237,11 @@
   list-style-type: disc;
   font-size: clamp(0.65rem, 1.9vmin, 0.8rem);
   line-height: 1.6;
+}
+
+/* Education title in content – hidden on desktop (corner shows it), visible on mobile */
+.cv-edu-section-title {
+  display: none;
 }
 
 /* Expanded quarter when a section is active – rectangle with diagonal fade to light */
@@ -564,4 +569,141 @@
   font-weight: 500;
   letter-spacing: 0.02em;
   line-height: 1.5;
+}
+
+/* Mobile / smartphone only: prevent overlap, text scales with vertical space */
+@media (max-width: 480px) {
+  /* Expand rectangle away from buttons: up for Career/Education, down for Media/Hobbies */
+  .cv-expanded-cv-quarter-tl,
+  .cv-expanded-cv-quarter-tr {
+    top: -25%;
+    height: 103%;
+  }
+  .cv-expanded-cv-quarter-br,
+  .cv-expanded-cv-quarter-bl {
+    bottom: -25%;
+    height: 103%;
+  }
+
+  .cv-expanded-content {
+    padding: 8% 7%;
+    justify-content: flex-start;
+  }
+
+  /* Extra top padding when corner label is at top (Career, Education) – reduced for Education (title in content) */
+  .cv-expanded-cv-quarter-tl .cv-expanded-content {
+    padding-top: 14%;
+  }
+  .cv-expanded-cv-quarter-tr .cv-expanded-content {
+    padding-top: 6%;
+  }
+
+  .cv-career.cv-section-content,
+  .cv-education.cv-section-content {
+    justify-content: flex-start;
+    gap: 0.5em;
+    min-height: auto;
+  }
+
+  /* On mobile: hide corner label for Education, show title in content instead */
+  .cv-corner-tr.cv-corner-active .cv-corner-content {
+    display: none;
+  }
+
+  .cv-edu-section-title {
+    display: block;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: clamp(0.65rem, 2.2vh, 0.9rem);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 0 0 0.8em 0;
+    text-align: left;
+  }
+
+  /* Move labels toward buttons: Career right, Media up-left, Hobbies up-right */
+  .cv-corner-tl .cv-corner-content,
+  .cv-corner-br .cv-corner-content,
+  .cv-corner-bl .cv-corner-content {
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+  }
+  .cv-corner-tl .cv-corner-content {
+    left: 22%;
+    right: auto;
+  }
+  .cv-corner-br .cv-corner-content {
+    left: 22%;
+    top: 22%;
+  }
+  .cv-corner-bl .cv-corner-content {
+    left: 22%;
+    bottom: 22%;
+    top: auto;
+  }
+
+  .cv-corner-label {
+    text-align: left;
+    font-size: clamp(0.6rem, 2vh, 0.85rem);
+    padding: 0.2rem 0.35rem;
+  }
+
+  .cv-job-role,
+  .cv-edu-degree {
+    font-size: clamp(0.7rem, 2.2vh, 0.95rem);
+  }
+
+  .cv-job-company,
+  .cv-edu-institution {
+    font-size: clamp(0.6rem, 2vh, 0.85rem);
+  }
+
+  .cv-job-period,
+  .cv-edu-period {
+    font-size: clamp(0.6rem, 1.8vh, 0.8rem);
+  }
+
+  .cv-job-highlights,
+  .cv-job-highlights li {
+    font-size: clamp(0.6rem, 1.8vh, 0.8rem);
+  }
+
+  .cv-edu-location {
+    font-size: clamp(0.55rem, 1.6vh, 0.75rem);
+  }
+
+  .cv-cert-title {
+    font-size: clamp(0.6rem, 1.8vh, 0.8rem);
+  }
+
+  .cv-certifications ul {
+    font-size: clamp(0.55rem, 1.6vh, 0.75rem);
+  }
+
+  .cv-section-content {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    text-align: left;
+  }
+
+  .cv-job,
+  .cv-edu-item {
+    flex-shrink: 0;
+    min-width: 0;
+  }
+
+  .cv-edu-item:first-of-type {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+  }
+
+  .cv-edu-item:nth-of-type(2) {
+    margin-top: 0.5em;
+  }
+
+  .cv-certifications {
+    margin-top: 0.5em;
+    padding-bottom: 1.5em;
+  }
 }

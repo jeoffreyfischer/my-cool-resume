@@ -34,6 +34,7 @@ function CareerContent() {
 function EducationContent() {
   return (
     <div className="cv-section-content cv-education">
+      <h2 className="cv-edu-section-title">Education</h2>
       {EDUCATION_CONTENT.items.map((edu, i) => (
         <article key={i} className="cv-edu-item">
           <div className="cv-edu-degree">{edu.degree}</div>
