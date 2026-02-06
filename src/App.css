@@ -243,8 +243,111 @@
 
 /* Section titles in content – hidden on desktop (corner shows them), visible on mobile */
 .cv-career-section-title,
-.cv-edu-section-title {
+.cv-edu-section-title,
+.cv-media-section-title {
   display: none;
+}
+
+/* Media section – links + YouTube embed, recruiter-friendly */
+.cv-media.cv-section-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  width: 100%;
+  pointer-events: auto;
+  gap: 0.6em;
+}
+
+/* Media in bottom-right: shift content right so Connect label isn't hidden by corner */
+.cv-expanded-cv-quarter-br .cv-expanded-content .cv-media {
+  padding-left: 6%;
+}
+
+.cv-media-links {
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.cv-media-links-nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 0.6em 1em;
+  justify-content: flex-start;
+}
+
+.cv-media-links-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(0.7rem, 2vmin, 0.85rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.4em 0;
+  color: var(--corner-text);
+  opacity: 0.95;
+}
+
+.cv-media-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(0.65rem, 1.8vmin, 0.8rem);
+  font-weight: 600;
+  color: var(--corner-text);
+  text-decoration: none;
+  padding: 0.25em 0.5em;
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 0.2em;
+  transition: background 0.2s ease, opacity 0.2s ease;
+}
+
+.cv-media-link:hover {
+  background: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+}
+
+.cv-media-link i {
+  font-size: 0.95em;
+}
+
+.cv-media-video {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.cv-media-video-label {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(0.65rem, 1.8vmin, 0.78rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0 0 0.3em 0;
+  color: var(--corner-text);
+  opacity: 0.9;
+  flex-shrink: 0;
+}
+
+.cv-media-embed-wrapper {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding-bottom: 35%; /* reduced height, 16:9 aspect ratio */
+  flex: 1;
+  min-height: 80px;
+}
+
+.cv-media-embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 0.25rem;
 }
 
 /* Expanded quarter when a section is active – rectangle with diagonal fade to light */
@@ -599,6 +702,23 @@
     padding-top: 6%;
   }
 
+  /* Bottom sections: padding for in-content title on mobile */
+  .cv-expanded-cv-quarter-br .cv-expanded-content,
+  .cv-expanded-cv-quarter-bl .cv-expanded-content {
+    padding-top: 6%;
+  }
+
+  /* Media on mobile: remove left padding, content left-aligned */
+  .cv-expanded-cv-quarter-br .cv-expanded-content .cv-media {
+    padding-left: 0;
+  }
+
+  /* Connect buttons: one per line on mobile */
+  .cv-media-links-nav {
+    flex-direction: column;
+    gap: 0.4em;
+  }
+
   .cv-career.cv-section-content,
   .cv-education.cv-section-content {
     justify-content: flex-start;
@@ -606,14 +726,16 @@
     min-height: auto;
   }
 
-  /* On mobile: hide corner labels for Career and Education, show titles in content instead */
+  /* On mobile: hide corner labels for Career, Education, Media; show titles in content instead */
   .cv-corner-tl.cv-corner-active .cv-corner-content,
-  .cv-corner-tr.cv-corner-active .cv-corner-content {
+  .cv-corner-tr.cv-corner-active .cv-corner-content,
+  .cv-corner-br.cv-corner-active .cv-corner-content {
     display: none;
   }
 
   .cv-career-section-title,
-  .cv-edu-section-title {
+  .cv-edu-section-title,
+  .cv-media-section-title {
     display: block;
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: 700;

@@ -56,9 +56,57 @@ function EducationContent() {
   );
 }
 
+const YOUTUBE_PLAYLIST_ID = 'PLpiOR7CBNvlqbUE95zfRuNDodbZI3aEJW';
+const YOUTUBE_EMBED_URL = `https://www.youtube.com/embed/videoseries?list=${YOUTUBE_PLAYLIST_ID}&index=3`;
+
+const MEDIA_LINKS = [
+  { label: 'GitHub', href: 'https://github.com/jeoffreyfischer', icon: 'fa-brands fa-github' },
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/jeoffrey-fischer', icon: 'fa-brands fa-linkedin' },
+  { label: 'SSW Profile', href: 'https://ssw.com.au/people/jeoffrey-fischer', icon: 'fa-solid fa-user' },
+];
+
+function MediaContent() {
+  return (
+    <div className="cv-section-content cv-media">
+      <h2 className="cv-media-section-title">Media</h2>
+      <div className="cv-media-links">
+        <h3 className="cv-media-links-title">Connect</h3>
+        <nav className="cv-media-links-nav" aria-label="Professional links">
+          {MEDIA_LINKS.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cv-media-link"
+            >
+              <i className={link.icon} aria-hidden="true" />
+              <span>{link.label}</span>
+            </a>
+          ))}
+        </nav>
+      </div>
+      <div className="cv-media-video">
+        <p className="cv-media-video-label">Talks & demos</p>
+        <div className="cv-media-embed-wrapper">
+          <iframe
+            className="cv-media-embed"
+            src={YOUTUBE_EMBED_URL}
+            title="Jeoffrey Fischer SSW - YouTube Playlist"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function SectionContent({ sectionId }) {
   if (sectionId === 'work') return <CareerContent />;
   if (sectionId === 'education') return <EducationContent />;
+  if (sectionId === 'public') return <MediaContent />;
   return null;
 }
 

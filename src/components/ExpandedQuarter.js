@@ -2,7 +2,7 @@ import SectionContent from './SectionContent';
 
 function ExpandedQuarter({ activeSection }) {
   if (!activeSection) return null;
-  const hasRichContent = ['work', 'education'].includes(activeSection.id);
+  const hasRichContent = ['work', 'education', 'public'].includes(activeSection.id);
   return (
     <div
       className={`cv-expanded-quarter cv-expanded-${activeSection.quarterClass}`}
