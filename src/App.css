@@ -232,7 +232,7 @@
 
 .cv-quarter:hover {
   filter: brightness(1.1);
-  transform: scale(1.02);
+  transform: scale(1.08);
 }
 
 .cv-quarter:hover .cv-quarter-icon {
@@ -360,13 +360,13 @@
   transform: scale(0.98);
 }
 
-/* Home icon: same behaviour as quarter icons – page color by default, white on hover */
+/* Home icon: same size and behaviour as quarter icons – page color by default, white on hover */
 .cv-center-icon {
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--color-icon-default);
-  font-size: clamp(1.5rem, 4vmin, 2.25rem);
+  font-size: clamp(3.25rem, 13vmin, 6.5rem);
   transition: color 0.2s ease;
 }
 
