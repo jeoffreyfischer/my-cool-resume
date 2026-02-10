@@ -40,6 +40,7 @@ function CenterCircle({ activeSection, setActiveSection }) {
           className="cv-center-inner cv-center-home-btn"
           onClick={(e) => {
             e.stopPropagation();
+            setExpanded(false);
             setActiveSection(null);
           }}
           aria-label="Back to home"
