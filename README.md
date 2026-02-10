@@ -1,5 +1,19 @@
 # my-resume
 
+Single-page CV site built with **React** and **Vite**, deployed to GitHub Pages.
+
+## Commands
+
+| Command | What it does |
+|--------|----------------|
+| `npm install` | Installs dependencies. Run once after clone or when `package.json` / `package-lock.json` change. |
+| `npm run dev` | Starts the **Vite** dev server locally (e.g. http://localhost:5173). Use this for day-to-day development; the app hot-reloads on save. |
+| `npm run build` | Runs the **Vite** production build and writes output to the `dist/` folder. Used by CI and before checking that the app builds. |
+| `npm run preview` | Serves the contents of `dist/` locally so you can test the production build before deploying. |
+| `npm run test` | Runs **Vitest** in watch mode (re-runs tests when files change). |
+| `npm run test:run` | Runs **Vitest** once (e.g. in CI). |
+| `git push` (to `main`) | Pushes your commits. Pushing to `main` triggers the GitHub Actions workflow, which runs `npm run build` and deploys the `dist/` folder to GitHub Pages. There is no separate “deploy” command. |
+
 ## Deployment
 
 The site deploys automatically to GitHub Pages on every push to `main`, and is served at **https://jeoffreyfischer.com**.
