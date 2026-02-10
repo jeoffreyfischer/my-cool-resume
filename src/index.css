@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Slightly larger base so all rem-based text scales up */
+html {
+  font-size: 112.5%;
+}
+
 /* Design tokens – use these instead of hard-coded colors (AGENTS.md) */
 :root {
   --color-page-bg: #0f172a; /* slate-900 */
