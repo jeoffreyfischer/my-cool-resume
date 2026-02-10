@@ -107,7 +107,7 @@ const YOUTUBE_SHORT_ID = 'WS0HWQtoBv8';
 const YOUTUBE_SHORT_EMBED_URL = `https://www.youtube.com/embed/${YOUTUBE_SHORT_ID}?autoplay=1`;
 
 const HOBBIES_IMAGES = [
-  { src: '/images/2025-sydney-half-marathon.png', alt: '2025 Sydney Half Marathon' },
+  { src: 'images/2025-sydney-half-marathon.png', alt: '2025 Sydney Half Marathon' },
 ];
 
 function HobbiesContent() {
@@ -121,7 +121,7 @@ function HobbiesContent() {
             {HOBBIES_IMAGES.map((img, i) => (
               <img
                 key={i}
-                src={baseUrl + img.src}
+                src={baseUrl ? baseUrl + img.src : '/' + img.src}
                 alt={img.alt}
                 className="cv-hobbies-img"
               />
