@@ -18,7 +18,7 @@ function CenterCircle({ activeSection, setActiveSection }) {
       ) : (
         <div className="cv-center-inner cv-center-inner--photo">
           <img
-            src={`${process.env.PUBLIC_URL}/images/jeo-thinking.png`}
+            src={`${import.meta.env.BASE_URL}images/jeo-thinking.png`}
             alt="Jeo"
             className="cv-center-photo"
           />

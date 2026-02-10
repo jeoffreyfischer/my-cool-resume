@@ -111,7 +111,7 @@ const HOBBIES_IMAGES = [
 ];
 
 function HobbiesContent() {
-  const baseUrl = process.env.PUBLIC_URL || '';
+  const baseUrl = import.meta.env.BASE_URL || '';
   return (
     <div className="cv-section-content cv-hobbies">
       <h2 className="cv-hobbies-section-title">Hobbies</h2>

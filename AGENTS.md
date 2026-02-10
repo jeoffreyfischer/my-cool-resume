@@ -3,7 +3,7 @@
 ### Do
 - Use React 19 with functional components and hooks (e.g. `useState`).
 - Use Tailwind CSS for layout and utilities; keep custom CSS in `src/App.css` and `src/index.css` where needed.
-- Use Font Awesome for icons (CDN in `public/index.html`); prefer `fa-solid` / `fa-brands` class names.
+- Use Font Awesome for icons (CDN in `index.html`); prefer `fa-solid` / `fa-brands` class names.
 - Prefer small, focused components and small diffs.
 - Reuse existing patterns (e.g. section config in `App.js`, CSS custom properties for theming).
 
@@ -14,20 +14,22 @@
 
 ### Commands
 ```bash
-# development
-npm start
+# development (Vite)
+npm run dev
 
-# tests (Jest + React Testing Library)
+# tests (Vitest + React Testing Library)
 npm run test
+npm run test:run
 npm run test -- --watch path/to/App.test.js
 
-# lint (via react-scripts / ESLint)
-npm run build
-# or run ESLint directly if configured
+# lint
 npx eslint src/
 
-# production build
+# production build (output: dist/)
 npm run build
+
+# preview production build locally
+npm run preview
 ```
 
 Deployment to GitHub Pages is automatic on push to `main` via `.github/workflows/deploy.yml`; no manual deploy step.
@@ -47,11 +49,11 @@ Deployment to GitHub Pages is automatic on push to `main` via `.github/workflows
 - Large refactors or changing project structure.
 
 ### Project structure
-- **Entry:** `src/index.js` → mounts `App` into `#root`.
-- **Main UI:** `src/App.js` – single-page CV with quarter sections and center home; state is `activeSection`.
+- **Entry:** `src/main.jsx` → mounts `App` into `#root`.
+- **Main UI:** `src/App.jsx` – single-page CV with quarter sections and center home; state is `activeSection`.
 - **Styles:** `src/App.css` (layout, quarters, center, icons), `src/index.css` (global). Tailwind in `index.css` or PostCSS config.
-- **Assets / HTML:** `public/index.html` (title, fonts, Font Awesome CDN).
-- **Tests:** `src/App.test.js`; use React Testing Library and `react-scripts test`.
+- **Assets / HTML:** `index.html` at project root (title, fonts, Font Awesome CDN); static assets in `public/` (copied to build root).
+- **Tests:** `src/App.test.jsx`; use React Testing Library and Vitest (`npm run test`).
 
 ### Good and bad examples
 - **Good:** Functional component with hooks like `App.js` (e.g. `useState` for `activeSection`).
