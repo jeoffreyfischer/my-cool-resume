@@ -28,10 +28,9 @@ npx eslint src/
 
 # production build
 npm run build
-
-# deploy to GitHub Pages
-npm run deploy
 ```
+
+Deployment to GitHub Pages is automatic on push to `main` via `.github/workflows/deploy.yml`; no manual deploy step.
 
 ### Safety and permissions
 
@@ -43,7 +42,7 @@ npm run deploy
 
 **Ask first:**
 - `npm install` / adding or changing dependencies.
-- `git push`, `npm run deploy`.
+- `git push` (deploy to GitHub Pages runs automatically on push to main).
 - Deleting files, changing permissions.
 - Large refactors or changing project structure.
 
