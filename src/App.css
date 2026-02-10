@@ -867,13 +867,49 @@
   animation: cv-center-shrink 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-.cv-center-name {
+.cv-center-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  text-align: center;
+  padding: 0.25em;
+}
+
+.cv-center-message-line {
   font-family: 'Inter', sans-serif;
   color: var(--color-page-bg);
-  font-size: clamp(1.1rem, 3.5vmin, 1.6rem);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-size: clamp(0.65rem, 2vmin, 0.9rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35em;
+}
+
+.cv-center-flag-img {
+  width: 1.1em;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  flex-shrink: 0;
+  border-radius: 0.1em;
+  vertical-align: middle;
+  object-fit: cover;
+}
+
+.cv-center-pin {
+  font-size: 0.9em;
+  color: #dc2626;
+}
+
+.cv-center-pin-emoji {
+  display: inline-block;
+  font-size: 1em;
+  line-height: 1;
+  vertical-align: middle;
 }
 
 @keyframes cv-center-expand {

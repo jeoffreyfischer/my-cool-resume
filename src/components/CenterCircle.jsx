@@ -57,7 +57,20 @@ function CenterCircle({ activeSection, setActiveSection }) {
           aria-label={expanded ? 'Collapse' : 'Reveal name'}
         >
           {showName ? (
-            <span className="cv-center-name">Jeoffrey</span>
+            <div className="cv-center-message" aria-label="Born in France, Sydney 10 years, France in Apr 2026">
+              <span className="cv-center-message-line">
+                <img src="https://flagcdn.com/w40/fr.png" alt="" width="20" height="15" className="cv-center-flag-img" />
+                Born in France
+              </span>
+              <span className="cv-center-message-line">
+                <img src="https://flagcdn.com/w40/au.png" alt="" width="20" height="15" className="cv-center-flag-img" />
+                10 years in Sydney
+              </span>
+              <span className="cv-center-message-line">
+                <span className="cv-center-pin-emoji" aria-hidden="true">📍</span>
+                France in Apr '26
+              </span>
+            </div>
           ) : (
             <img
               src={`${import.meta.env.BASE_URL}images/jeo-thinking.png`}
