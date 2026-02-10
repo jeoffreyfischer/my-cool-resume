@@ -842,7 +842,7 @@
   overflow: hidden;
 }
 
-.cv-center-inner--photo:not(.cv-center-inner--expanding):not(.cv-center-inner--shrinking):hover {
+.cv-center-inner--photo:not(.cv-center-inner--expanding):not(.cv-center-inner--shrinking):not(.cv-center-inner--expanded):hover {
   transform: scale(1.08);
 }
 
@@ -867,10 +867,6 @@
 
 .cv-center-inner--expanded {
   transform: scale(2);
-}
-
-.cv-center-inner--expanded:hover {
-  transform: scale(2.08);
 }
 
 .cv-center-inner--shrinking {
