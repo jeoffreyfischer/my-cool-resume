@@ -794,6 +794,7 @@
   padding: 0.75rem;
   pointer-events: auto; /* capture clicks so the center doesn’t activate quarter buttons */
   cursor: pointer;
+  transition: transform 0.25s ease;
 }
 
 .cv-center-home-btn {
@@ -804,6 +805,7 @@
 .cv-center-home-btn:hover {
   background-color: var(--color-center-inner-hover-bg);
   border-color: var(--color-center-inner-hover-border);
+  transform: scale(1.05);
 }
 
 .cv-center-home-btn:active {
@@ -840,6 +842,10 @@
   overflow: hidden;
 }
 
+.cv-center-inner--photo:not(.cv-center-inner--expanding):not(.cv-center-inner--shrinking):hover {
+  transform: scale(1.08);
+}
+
 .cv-center-photo {
   width: 100%;
   height: 100%;
@@ -861,6 +867,10 @@
 
 .cv-center-inner--expanded {
   transform: scale(2);
+}
+
+.cv-center-inner--expanded:hover {
+  transform: scale(2.08);
 }
 
 .cv-center-inner--shrinking {
