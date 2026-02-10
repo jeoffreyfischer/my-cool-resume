@@ -793,6 +793,7 @@
   justify-content: center;
   padding: 0.75rem;
   pointer-events: auto; /* capture clicks so the center doesn’t activate quarter buttons */
+  cursor: pointer;
 }
 
 .cv-center-home-btn {
@@ -844,6 +845,53 @@
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+/* Center name reveal: gradient (darker bottom-left → lighter top-right), border stays original gray */
+.cv-center-inner--expanding,
+.cv-center-inner--expanded,
+.cv-center-inner--shrinking {
+  background: linear-gradient(to top right, #626663, #a4a4a0);
+  border-color: var(--color-center-inner-border);
+}
+
+.cv-center-inner--expanding {
+  animation: cv-center-expand 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.cv-center-inner--expanded {
+  transform: scale(2);
+}
+
+.cv-center-inner--shrinking {
+  animation: cv-center-shrink 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.cv-center-name {
+  font-family: 'Inter', sans-serif;
+  color: var(--color-page-bg);
+  font-size: clamp(1.1rem, 3.5vmin, 1.6rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@keyframes cv-center-expand {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(2);
+  }
+}
+
+@keyframes cv-center-shrink {
+  0% {
+    transform: scale(2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* Mobile / smartphone only: prevent overlap, text scales with vertical space */
