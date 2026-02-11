@@ -878,26 +878,38 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1em;
+  gap: clamp(0.5em, 2vmin, 1.25em);
   text-align: center;
-  padding: 0.25em;
+  padding: clamp(0.2em, 1.5vmin, 0.5em);
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .cv-center-message-line {
   font-family: 'Inter', sans-serif;
   color: var(--color-page-bg);
-  font-size: clamp(0.65rem, 2vmin, 0.9rem);
+  font-size: clamp(0.4rem, 2.2vmin, 1.5rem);
   font-weight: 600;
   letter-spacing: 0.02em;
-  line-height: 1.3;
+  line-height: 1.35;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.35em;
+  gap: 0.4em;
+  flex-wrap: wrap;
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .cv-center-message-line {
+    font-size: clamp(0.35rem, 2.5vmin, 0.8rem);
+    white-space: normal;
+    text-align: center;
+  }
 }
 
 .cv-center-flag-img {
-  width: 1.1em;
+  width: 1.15em;
   height: auto;
   aspect-ratio: 4 / 3;
   flex-shrink: 0;
